@@ -21,14 +21,14 @@ while choice.casefold() != "q":
     choice = input()
 
     if choice == "1":
-        all_students = Student.get_all_students()
+        all_students = Student.find_all()
         for student in all_students:
             print(f"Student {student.id}: {student.first_name} {student.surname}, {student.age}")
 
     elif choice == "2":
         print("Enter Student Surname:")
         surname = input()
-        student = Student.student_search(surname)
+        student = Student.find_by_name(surname)
         if student is None:
             print("Student not found")
         else:
@@ -37,13 +37,13 @@ while choice.casefold() != "q":
     elif choice == "3":
         print("Enter the student's surname:")
         surname = input()
-        student = Student.student_search(surname)
+        student = Student.find_by_name(surname)
 
         if student is not None:
             print("Enter the student's new age:")
             age = input()
 
-            Student.update_student(student.id, age)
+            student.update(student.id, age)
             print(f"{student.first_name} {student.surname} updated!")
         else:
             print("Student not found")

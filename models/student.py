@@ -11,7 +11,7 @@ class Student:
         self.surname = surname
         self.age = age
 
-    def insert_student(self):
+    def save(self):
         sql = """
             INSERT INTO students (first_name, surname, age)
             VALUES (%s, %s, %s)
@@ -21,7 +21,7 @@ class Student:
         result = Sqlrunner.run(sql, "fetchone", values)
         self.id = result[0]
 
-    def get_all_students():
+    def find_all():
         sql = "SELECT * FROM students;"
         result = Sqlrunner.run(sql, "fetchall")
         student_array = []
@@ -31,7 +31,7 @@ class Student:
             student_array.append(fetched_student)
         return student_array
 
-    def student_search(surname):
+    def find_by_name(surname):
         sql = "SELECT * FROM students WHERE surname= %s;"
         values = (surname,)
         student_row = Sqlrunner.run(sql, "fetchone", values)
@@ -43,7 +43,7 @@ class Student:
         else:
             return student_row
 
-    def update_student(id, new_age):
+    def update(self, id, new_age):
         sql = "UPDATE students SET age=%s WHERE id=%s"
         values = (new_age, id)
         Sqlrunner.run(sql, "", values)

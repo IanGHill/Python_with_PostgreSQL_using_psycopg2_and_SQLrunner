@@ -12,10 +12,5 @@ class Seeds:
     def run_seeds():
         student1 = Student("John", "McCollum", 38)
         student2 = Student("David", "Bell", 35)
-        student1.insert_student()
-        student2.insert_student()
-
-
-
-
-
+        student1.save()
+        student2.save()
