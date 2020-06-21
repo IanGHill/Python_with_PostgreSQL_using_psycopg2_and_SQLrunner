@@ -41,9 +41,9 @@ while choice.casefold() != "q":
 
         if student is not None:
             print("Enter the student's new age:")
-            age = input()
+            student.age = input()
 
-            student.update(student.id, age)
+            student.update()
             print(f"{student.first_name} {student.surname} updated!")
         else:
             print("Student not found")

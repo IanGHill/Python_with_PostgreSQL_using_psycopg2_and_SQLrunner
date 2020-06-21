@@ -43,7 +43,7 @@ class Student:
         else:
             return student_row
 
-    def update(self, id, new_age):
-        sql = "UPDATE students SET age=%s WHERE id=%s"
-        values = (new_age, id)
+    def update(self):
+        sql = "UPDATE students SET first_name=%s, surname=%s, age=%s WHERE id=%s"
+        values = (self.first_name, self.surname, self.age, self.id)
         Sqlrunner.run(sql, "", values)
